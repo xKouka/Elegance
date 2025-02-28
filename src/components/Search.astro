@@ -1,0 +1,12 @@
+---
+import {Image} from 'astro:assets'
+import Buscar from '../assets/search.svg'
+
+---
+<div class="w-auto flex justify-center mt-8">
+        <div class="relative flex justify-between w-1/4 h-11">
+            <input  type="text" placeholder="Buscar" class="border-2 border-gray-400 rounded-3xl w-full p-3">       
+            <button type="button" class="h-6 w-6 rounded-xl absolute right-0 m-3"><Image src={Buscar} alt="Buscar" class="h-6 w-6"/>
+            </button>
+        </div>
+</div>

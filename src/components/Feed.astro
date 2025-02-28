@@ -1,0 +1,25 @@
+---
+import Cards from "./Cards.astro"
+---
+<div class="flex flex-col justify-center">
+    <div class="flex justify-center gap-9 m-10">
+        <button class="bg-white rounded-2xl w-24 h-11 hover:bg-black hover:text-white">Inicio</button>
+        <button class="bg-white rounded-2xl w-24 h-11 hover:bg-black hover:text-white">Anillos</button>
+        <button class="bg-white rounded-2xl w-24 h-11 hover:bg-black hover:text-white">Cadenas</button>
+        <button class="bg-white rounded-2xl w-24 h-11 hover:bg-black hover:text-white">Bolsos</button>
+            
+    </div>
+    <div class="flex flex-row justify-center w-full">
+        <div class="flex flex-wrap justify-center gap-7 w-8/12">
+            <!--Aqui iran las Cards -->
+            <!--Las card apareceran automaticamente desde la base de datos (Content Layer) -->
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        <Cards/>
+        
+        </div>
+    </div>
+</div>
