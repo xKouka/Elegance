@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import { createAccesToken } from '../libs/jwt.js';
 
 export const register = async (req,res) => {
-    const {name,lastName,email,password,ci} = req.body;
+    const {name,email,password,ci} = req.body;
     
     try{
 
@@ -11,7 +11,6 @@ export const register = async (req,res) => {
 
         const newUser = new User({
             name,
-            lastName,
             email,
             password:passwordHash,
             ci,
@@ -57,17 +56,16 @@ export const logout = (req,res) =>{
 };
 
 export const profile = async (req, res) => {
-    const userFound = await User.findById(req.user.id)
+    const userFound = await User.findById(req.name.id)
 
 if (!userFound) return res.status(400).json({message:"user not found"});
 
 return res.json({
     id: userFound._id,
-    username: userFound.name,
+    name: userFound.name,
     email: userFound.email,
     createAt:userFound.createdAt,
     updateAt:userFound.updatedAt
 })
-
     res.send('profile')
 }
