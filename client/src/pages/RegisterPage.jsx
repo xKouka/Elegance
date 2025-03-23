@@ -8,17 +8,15 @@ import {useNavigate} from 'react-router-dom'
 function RegisterPage() {
     
     const {register, handleSubmit} = useForm();
-    const {signUp, isAuthtenticated} = useAuth();
+    const {signUp, isAuthenticated} = useAuth();
     const navigation = useNavigate();
-
-
 
     const onSubmit = handleSubmit (async (values) => {
         signUp(values);
 })
-    useEffect(()=>{
-    if (isAuthtenticated) navigation("/login");
-    },[isAuthtenticated])
+    useEffect(() => {
+        if (isAuthenticated) navigation("/");
+    }, [isAuthenticated, navigation]);
 
 
   return (
@@ -65,7 +63,7 @@ function RegisterPage() {
             
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
                     ¿Ya tienes cuenta?
-                    <a href="http://localhost:4321/register" className="font-semibold text-indigo-600 hover:text-indigo-500">Inicia sesion</a>
+                    <a href="/login" className="font-semibold text-indigo-600 hover:text-indigo-500">Inicia sesion</a>
                 </p>
             </div>
         </div>
