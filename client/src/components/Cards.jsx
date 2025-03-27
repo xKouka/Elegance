@@ -1,8 +1,7 @@
 import img from '../assets/perro.jpg'
 
 function Cards(){
-    return(
-        
+    return(       
     <div className="flex flex-col justify-between gap-3 bg-white rounded-xl drop-shadow-xl h-96 w-64">
         <div className="flex justify-center">
             <img src={img} className="h-40 w-40 m-6 rounded-xl"/>
