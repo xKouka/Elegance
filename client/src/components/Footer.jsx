@@ -1,7 +1,7 @@
 import facebook from '../assets/facebook.svg'
 import twitter from '../assets/twitter.svg'
 import ig from '../assets/instagram.svg'
-import logo from '../assets/eleganceH.svg'
+import logo from '../assets/EleganceH.svg'
 
 
 
