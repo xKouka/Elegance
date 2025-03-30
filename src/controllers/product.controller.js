@@ -1,7 +1,20 @@
 import Product from "../models/product.models.js"
 
 export const getProducts = async (req,res) => {
-    const product = await Product.find()
+
+    const {tittle= "", type=""} = req.query
+
+    let query = {};
+
+    if (type) {
+      query.type = type;
+    }
+
+    if (tittle) {
+      query.tittle = { $regex: tittle, $options: 'i' }; // Búsqueda insensible a mayúsculas y minúsculas
+    }
+    
+    const product = await Product.find(query)
     res.json(product);
 };
 

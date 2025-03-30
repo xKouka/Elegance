@@ -6,7 +6,11 @@ const router = Router()
 
 router.get('/product', getProducts )
 
-router.get('/product/:id', authRequired, getProduct)
+router.get('/product/:id',  getProduct)
+
+router.get('/product/:name',  getProduct)
+
+router.get('/product/:type',  getProduct)
 
 router.post('/product', authRequired, createProduct)
 

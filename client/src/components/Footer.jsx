@@ -20,7 +20,7 @@ function Footer(){
                 <div className="text-white">
                     <span>Dev. Oscar Aguiar</span>
                 </div>
-                <div className="flex flex-row gap-8 w-64">   
+                <div className="flex flex-row gap-8 w-64 mb-6">   
                     <img className="size-6" src={ig} alt="ig"/>
                     <img className="size-6" src={twitter} alt="tt"/>
                     <img className="size-6" src={facebook} alt="fc"/>
