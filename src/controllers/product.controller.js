@@ -11,7 +11,7 @@ export const getProducts = async (req,res) => {
     }
 
     if (tittle) {
-      query.tittle = { $regex: tittle, $options: 'i' }; // Búsqueda insensible a mayúsculas y minúsculas
+      query.tittle = { $regex: tittle, $options: 'i' };
     }
     
     const product = await Product.find(query)

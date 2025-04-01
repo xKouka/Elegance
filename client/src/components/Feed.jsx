@@ -16,7 +16,7 @@ function Feed(){
                 <button className="bg-white border-2 border-black rounded-2xl w-24 h-11 hover:bg-black hover:text-white" onClick={async()=> await searchProductByType("")}>Inicio</button>
                 <button className="bg-white border-2 border-black rounded-2xl w-24 h-11 hover:bg-black hover:text-white" onClick={async()=> await searchProductByType("anillos")}>Anillos</button>
                 <button className="bg-white border-2 border-black rounded-2xl w-24 h-11 hover:bg-black hover:text-white" onClick={async()=> await searchProductByType("collar")}>Collares</button>
-                <button className="bg-white border-2 border-black rounded-2xl w-24 h-11 hover:bg-black hover:text-white"onClick={async()=> await searchProductByType("bolsos")} >Bolsos</button>
+                <button className="bg-white border-2 border-black rounded-2xl w-24 h-11 hover:bg-black hover:text-white" onClick={async()=> await searchProductByType("bolsos")} >Bolsos</button>
                     
             </div>
             <div className="flex flex-row justify-center w-full">
