@@ -2,55 +2,47 @@ import User from '../models/user.models.js'
 import bcrypt from 'bcryptjs';
 import { createAccesToken } from '../libs/jwt.js';
 
-export const register = async (req,res) => {
-    const {name,email,password} = req.body;
-    
-    try{
-
-        const userFound = await User.findOne({email})
-        if (userFound) 
-            return res.status(400).json(["El email ya esta en uso"]);
-
-
-        const passwordHash = await bcrypt.hash(password, 10)
-
-        const newUser = new User({
-            name,
-            email,
-            password:passwordHash,
-        });
-
-        const userSaved = await newUser.save();
-        const token = await createAccesToken({id: userSaved._id})
-        res.cookie("token", token)
-        res.json({
-            message:"Usuario creado"
-        })
-
+export const register = async (req, res) => {
+    const { name, email, password } = req.body;
+  
+    try {
+      const userFound = await User.findOne({ email });
+      if (userFound) return res.status(400).json(["El email ya esta en uso"]);
+  
+      const passwordHash = await bcrypt.hash(password, 10);
+  
+      const newUser = new User({
+        name,
+        email,
+        password: passwordHash,
+      });
+  
+      const userSaved = await newUser.save();
+      const token = await createAccesToken({ id: userSaved._id });
+      res.cookie("token", token);
+      res.json(userSaved); // Cambia esto para enviar el objeto userSaved completo
     } catch (error) {
-        res.status(500).json({message: error.message})
+      res.status(500).json({ message: error.message });
     }
-};
+  };
 
-export const login = async (req,res) => {
-    const {email,password} = req.body;
-
-    try{
-        const userFound = await User.findOne({email})
-        if(!userFound) return res.status(400).json({message: "Usuario no encontrado"})
-
-        const isMatch = await bcrypt.compare(password, userFound.password);
-        if(!isMatch) return res.status(400).json({message:'incorrecto'})
-
-        const token = await createAccesToken({id: userFound._id })
-        res.cookie("token", token)
-        res.json({
-            message:"Sesion iniciada"
-        })
+  export const login = async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const userFound = await User.findOne({ email });
+      if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
+  
+      const isMatch = await bcrypt.compare(password, userFound.password);
+      if (!isMatch) return res.status(400).json({ message: 'incorrecto' });
+  
+      const token = await createAccesToken({ id: userFound._id });
+      res.cookie("token", token);
+      res.json(userFound); // Cambia esto para enviar el objeto userFound completo
     } catch (error) {
-        res.status(500).json({message: error.message})
+      res.status(500).json({ message: error.message });
     }
-};
+  };
 
 export const logout = (req,res) =>{
     res.cookie('token',"" ,{
