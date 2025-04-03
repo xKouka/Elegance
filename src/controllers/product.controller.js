@@ -19,12 +19,12 @@ export const getProducts = async (req,res) => {
 };
 
 export const createProduct = async (req,res) => {
-    const{tittle,price,url,size,count,type} = req.body
+    const{tittle,price,img,size,count,type} = req.body
 
     const newProduct = new Product({
         tittle,
         price,
-        url,
+        img,
         size,
         count,
         type,

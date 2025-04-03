@@ -12,10 +12,10 @@ router.get('/product/:tittle',  getProduct)
 
 router.get('/product/:type',  getProduct)
 
-router.post('/product', authRequired, createProduct)
+router.post('/product', createProduct)
 
-router.delete('/product/:id', authRequired, deleteProduct)
+router.delete('/product/:id',  deleteProduct)
 
-router.put('/product/:id', authRequired, updateProduct)
+router.put('/product/:id',  updateProduct)
 
 export default router

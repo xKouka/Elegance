@@ -27,7 +27,6 @@ function HomePage() {
     return(
     <>
         <Header/>
-        <Search/>
         <Feed/>
         <Footer/>
     </>
