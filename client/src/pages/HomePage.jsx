@@ -1,36 +1,34 @@
-import {useEffect} from 'react';
-import Header from '../components/Header.jsx'
-import Search from '../components/Search.jsx'
-import Feed from '../components/Feed.jsx'
+import { useEffect } from 'react';
+import Header from '../components/Header.jsx';
+import Feed from '../components/Feed.jsx';
 import Footer from '../components/Footer.jsx';
-import {GetProduct} from '../service/product.service.js'
+import { GetProduct } from '../service/product.service.js';
 import { useAplication } from '../context/AplicationContext.jsx';
 
-
 function HomePage() {
-    const {setProduct} = useAplication() 
+    const { setProduct } = useAplication();
 
     useEffect(() => {
-    (async()=>{
-        getProduct()
-    })()
-
-  
+        (async () => {
+            await getProduct();
+        })();
     }, []);
 
-    const getProduct = async() =>{
-        const products = await GetProduct()
-        console.log(products)
-        setProduct(products)
-    }
+    const getProduct = async () => {
+        const products = await GetProduct();
+        console.log(products);
+        setProduct(products);
+    };
 
-    return(
-    <>
-        <Header/>
-        <Feed/>
-        <Footer/>
-    </>
-    )
+    return (
+        <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow mb-8">
+                <Feed />
+            </main>
+            <Footer />
+        </div>
+    );
 }
 
 export default HomePage;

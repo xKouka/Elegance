@@ -12,11 +12,11 @@ function Footer(){
                 <img src={logo} className="size-40 "/>
             </div>
 
-            <div className="flex flex-row justify-center gap-16 ">
+            <div className="flex flex-row justify-center gap-16 mb-4">
                 <a href="/" className="text-white ">Inicio</a>
                 <a href="/about" className="text-white">¿Quiénes somos?</a>
             </div>
-            <div className="flex flex-row  justify-around w-auto m-9 -mb-9">
+            <div className="flex flex-row  justify-around w-auto">
                 <div className="text-white">
                     <span>Dev. Oscar Aguiar</span>
                 </div>

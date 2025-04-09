@@ -59,6 +59,7 @@ const searchProductByTitle = async (title) => {
                 id={element._id}
                 tittle={element.tittle}
                 price={element.price}
+                img={element.img}
               />
             ))}
         </div>
