@@ -12,8 +12,14 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+  
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('isAuthenticated') === 'true';
+  });
   const [errors, setErrors] = useState([]);
 
   const signUp = async (userData) => {
@@ -31,9 +37,11 @@ export const AuthProvider = ({ children }) => {
   const signIn = async (user) => {
     try {
       const res = await loginRequest(user);
-      console.log(res.data);
       setUser(res.data);
       setIsAuthenticated(true);
+  
+      localStorage.setItem('user', JSON.stringify(res.data));
+      localStorage.setItem('isAuthenticated', 'true');
     } catch (error) {
       if (Array.isArray(error.response.data)) {
         return setErrors(error.response.data);
@@ -41,18 +49,22 @@ export const AuthProvider = ({ children }) => {
       setErrors([error.response.data.message]);
     }
   };
+  
 
-  const logoutUser = async (user) => {
+  const logoutUser = async () => {
     try {
-      await logout(user); // Llama a la función logout de tu API
+      await logout(); // No necesitas pasar user aquí
       setUser(null);
       setIsAuthenticated(false);
-      setErrors([]); // Limpia los errores
+      setErrors([]);
+  
+      localStorage.removeItem('user');
+      localStorage.removeItem('isAuthenticated');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
-      // Maneja el error apropiadamente (por ejemplo, muestra un mensaje de error)
     }
   };
+  
 
   return (
     <AuthContext.Provider
@@ -62,8 +74,10 @@ export const AuthProvider = ({ children }) => {
         user,
         isAuthenticated,
         errors,
-        logoutUser, // Agrega logoutUser al contexto
-        setErrors, // Agrega setErrors al contexto
+        logoutUser,
+        setErrors,
+        setUser, // ✅ expuesto al contexto
+        setIsAuthenticated // ✅ expuesto al contexto
       }}
     >
       {children}
