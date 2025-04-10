@@ -1,7 +1,7 @@
 import carrito from '../assets/handbag.svg';
 import logo from '../assets/EleganceH.svg';
 import { useAuth } from '../context/AuthContext';
-import LogoutButton from './logoutButton';
+import LogoutButton from './LogoutButton';
 
 function Header() {
   const { isAuthenticated, user } = useAuth();
