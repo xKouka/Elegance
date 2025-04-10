@@ -40,7 +40,7 @@ function CartPage() {
                 className="border-black bg-white border-2 text-2xl rounded-full h-14 w-36 hover:bg-black hover:text-white hover:border-black"
                 onClick={handleClearCart}
               >
-                Vaciar carrito
+                Vaciar
               </button>
               <button
                 className="border-black bg-white border-2 text-2xl rounded-full h-14 w-36 hover:bg-black hover:text-white hover:border-black"
