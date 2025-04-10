@@ -11,26 +11,27 @@ function ProductPage() {
 
     useEffect(() => {
         (async () => {
-            GetProduct()
-        })()
+            GetProduct();
+        })();
     }, [productId]);
 
     const GetProduct = async () => {
-        const product = await GetProductById(productId)
-        setProduct(product)
-    }
-
+        const product = await GetProductById(productId);
+        setProduct(product);
+    };
 
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <Header />
-            {product? (
-                <Storecard product={product} />
-            ) : (
-                <div>Producto no encontrado</div>
-            )}
+            <div className="flex-grow">
+                {product ? (
+                    <Storecard product={product} />
+                ) : (
+                    <div>Producto no encontrado</div>
+                )}
+            </div>
             <Footer />
-        </>
+        </div>
     );
 }
 
