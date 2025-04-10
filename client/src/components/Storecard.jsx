@@ -31,7 +31,7 @@ function Storecard({ product }) {
             <div className="flex justify-between w-3/4 bg-white rounded-2xl p-6">
                 <div className="w-1/2 flex justify-center">
                     <img
-                        src="https://ik.imagekit.io/jshcpsxdg/collar_corazon.jpg?updatedAt=1744260328833"
+                        src={product.img}
                         alt="foto"
                         className="h-80 w-72 rounded-xl"
                     />
